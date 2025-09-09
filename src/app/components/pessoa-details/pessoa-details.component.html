@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="card">
+    <div class="card-body">
+        
+      <form (ngSubmit)="salvar(pessoa)">
+        <div class="mb-3">
+          <label for="nome" class="form-label">Nome</label>
+          <input id="nome" type="text" class="form-control" [(ngModel)]="pessoa.nome" name="nome" required>
+        </div>
+        <div class="mb-3">
+          <label for="dataNascimento" class="form-label">Data Nascimento</label>
+          <input id="dataNascimento" type="text" class="form-control" [(ngModel)]="pessoa.dataNascimento" name="dataNascimento" required>
+        </div>
+
+        <div class="mb-3">
+          <label for="email" class="form-label">Email:</label>
+          <input id="email" type="text" class="form-control" [(ngModel)]="pessoa.email" name="email" required>
+        </div>
+
+         <div class="mb-3">
+          <label for="cpf" class="form-label">CPF:</label>
+          <input id="cpf" type="text" class="form-control" [(ngModel)]="pessoa.cpf" name="cpf" required>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Salvar</button>
+      </form>
+    </div>
+  </div>
+</div>

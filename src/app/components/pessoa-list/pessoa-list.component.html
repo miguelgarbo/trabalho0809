@@ -1,0 +1,33 @@
+<div class="container">
+  <h1>Listagem de Pessoas</h1>
+  <br>
+  <button class="btn btn-primary" routerLink="/pessoas/new">Cadastrar Pessoa</button>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>Data Nascimento</th>
+        <th>CPF</th>
+        <th>Email</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (pessoa of pessoas; track pessoa.id) {
+        <tr>
+          <td>
+            <a href="" routerLink="/pessoas/{{pessoa.id}}">{{pessoa.id}}</a>
+          </td>
+          <td>{{pessoa.nome}}</td>
+          <td>{{pessoa.dataNascimento}}</td>
+          <td>{{pessoa.cpf}}</td>
+          <td>{{pessoa.email}}</td>
+          td
+          <td>
+            <button type="button" class="btn btn-danger" (click)="deletar(pessoa.id)">Deletar</button>
+          </td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>
