@@ -15,6 +15,8 @@ export class PessoaDetailsComponent {
 
   pessoa: Pessoa = new Pessoa();
   pessoaService = inject(PessoaService)
+
+  //pegar o parametro da url
   activedRoute = inject(ActivatedRoute)
 
   router = inject(Router)
@@ -27,26 +29,30 @@ export class PessoaDetailsComponent {
   }
 
   salvar(pessoa: Pessoa){
-    if(pessoa.id ==null){
-
+    if(pessoa.id == null){
     this.pessoaService.save(pessoa).subscribe({
       next: ()=>{
-        this.router.navigate(['/pessoas'])
+        alert("Pessoa Salva Com Sucesso")
+        this.router.navigate(['/principal/pessoas'])
       },
       error: erro =>{
+        alert("Erro Ao Salvar Pessoa")
+
         console.error(erro)
       }
     })
   }else{
       this.pessoaService.update(pessoa).subscribe({
         next:()=> {
-          this.router.navigate(['/pessoas']);
+            alert("Pessoa Atualizada Com Sucesso")
+
+          this.router.navigate(['/principal/pessoas']);
         },
         error: erro=>{
+          alert("Erro ao Atualizar Pessoa")
           console.error(erro);
         }
       })
-
   }
   }
 
@@ -54,7 +60,6 @@ export class PessoaDetailsComponent {
     this.pessoaService.findByid(id).subscribe({
 
       next: pessoa =>{
-
         this.pessoa = pessoa;
       },
       error: erro =>{
@@ -62,7 +67,5 @@ export class PessoaDetailsComponent {
       }
     })
   }
-
-
 
 }

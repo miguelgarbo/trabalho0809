@@ -10,13 +10,14 @@
         <th>Data Nascimento</th>
         <th>CPF</th>
         <th>Email</th>
+        <th>Ações</th>
       </tr>
     </thead>
     <tbody>
       @for (pessoa of pessoas; track pessoa.id) {
         <tr>
           <td>
-            <a href="" routerLink="/pessoas/{{pessoa.id}}">{{pessoa.id}}</a>
+            <a href="" routerLink="/principal/pessoas/{{pessoa.id}}/edit">{{pessoa.id}}</a>
           </td>
           <td>{{pessoa.nome}}</td>
           <td>{{pessoa.dataNascimento}}</td>
@@ -24,7 +25,8 @@
           <td>{{pessoa.email}}</td>
           
           <td>
-            <button type="button" class="btn btn-danger" (click)="deletar(pessoa.id)">Deletar</button>
+            <button type="button" class="btn btn-danger" (click)="deletar(pessoa.id)" [routerLink]="['/principal/pessoas', pessoa.id]">Deletar</button>
+            <button type="button" class="btn btn-warning" (click)="atualizar(pessoa)" >Atualizar</button>
           </td>
         </tr>
       }

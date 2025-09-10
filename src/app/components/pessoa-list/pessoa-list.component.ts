@@ -2,10 +2,11 @@ import { Component, inject, numberAttribute } from '@angular/core';
 import { PessoaService } from '../../services/pessoa.service';
 import { Router, RouterLink } from '@angular/router';
 import { Pessoa } from '../../models/pessoa';
+import { MdbRippleModule } from 'mdb-angular-ui-kit/ripple';
 
 @Component({
   selector: 'app-pessoa-list',
-  imports: [RouterLink],
+  imports: [RouterLink, MdbRippleModule],
   templateUrl: './pessoa-list.component.html',
   styleUrl: './pessoa-list.component.scss'
 })
@@ -19,19 +20,9 @@ export class PessoaListComponent {
   ngOnInit(){
     this.findAll();
   }
-    pessoa1: Pessoa = new Pessoa();
 
   constructor(){
-
-    this.pessoa1.id=13
-    this.pessoa1.nome="Ana"
-    this.pessoa1.email="ana@gmail.com"
-    this.pessoa1.cpf="3643247238473"
-    this.pessoa1.dataNascimento="20/08/1990"
-
-
-    this.pessoas.push(this.pessoa1)
-
+     this.findAll();
   }
 
   findAll(){
@@ -44,21 +35,26 @@ export class PessoaListComponent {
         console.log(erro)
       }
     })
-  }
+}
 
   deletar(id:number){
+    if(confirm("Deseja Realmente Excluir")){
     this.pessoaService.deleteById(id).subscribe({
 
       next: ()=>{
+        alert("Pessoa Excluida Com Sucesso")
       this.findAll()
     },
     error: (erro)=>{
+      alert("Erro ao Excluir A Pessoa")
       console.log(erro)
     }
     })
   }
+  }
 
-
-
+    atualizar(pessoa: Pessoa){
+        this.router.navigate(['/principal/pessoas', pessoa.id, 'edit']);
+  }
 
 }
