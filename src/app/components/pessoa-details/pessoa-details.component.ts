@@ -24,8 +24,6 @@ export class PessoaDetailsComponent {
     if (id > 0) {
       this.findById(id);
     }
-    
-
   }
 
   salvar(pessoa: Pessoa){

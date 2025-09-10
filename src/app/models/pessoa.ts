@@ -5,5 +5,4 @@ export class Pessoa {
     dataNascimento!: string;
     cpf!: string;
     email!: string;
-
 }
